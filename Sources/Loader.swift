@@ -5,7 +5,7 @@
     import Darwin
 #endif
 
-public struct SwiftGL {
+public struct OSGL {
     internal static var libGL: UnsafeMutableRawPointer!
 
     public static func load() {
@@ -18,6 +18,8 @@ public struct SwiftGL {
             loadAllGLFunctions()
 
             defer { dlclose(SwiftGL.libGL) }
+        #else
+            fatalError("OSGL is not supported on this platform")
         #endif
     }
 }
