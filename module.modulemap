@@ -1,0 +1,5 @@
+module COpenGL [system] {
+	header "/usr/include/gl/glew.h"
+	link "glew"
+	export *
+}
