@@ -18,5 +18,5 @@ let package = Package(
 ```
 
 # Usage
-To use OSGL you simply have to call `import OSGL` and all OpenGL constants and functions become available.
-To initialize OSGL you have to call `OSGL.load()` once at the beginning of your application.
+To use OSGL you simply have to add `import OSGL` to your .swift files and all OpenGL constants and functions become available.
+To initialize OSGL you have to call `OSGL.load()` once at the beginning of your application. This way OSGL loads all OpenGL functions from the system.
