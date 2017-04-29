@@ -10,14 +10,14 @@ public struct OSGL {
 
     public static func load() {
         #if os(Linux) || os(macOS)
-            SwiftGL.libGL = dlopen("libGL.so", RTLD_LAZY);
-            if SwiftGL.libGL == nil {
+            OSGL.libGL = dlopen("libGL.so", RTLD_LAZY);
+            if OSGL.libGL == nil {
                 fatalError("Failed to load libGL.so")
             }
 
             loadAllGLFunctions()
 
-            defer { dlclose(SwiftGL.libGL) }
+            defer { dlclose(OSGL.libGL) }
         #else
             fatalError("OSGL is not supported on this platform")
         #endif
@@ -25,5 +25,5 @@ public struct OSGL {
 }
 
 internal func loadGLFunction<T>(named name: String, as: T.Type) -> T {
-    return unsafeBitCast(dlsym(SwiftGL.libGL, name), to: T.self)
+    return unsafeBitCast(dlsym(OSGL.libGL, name), to: T.self)
 }
